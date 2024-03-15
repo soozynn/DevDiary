@@ -5,9 +5,14 @@ import Link from "next/link";
 import { useState } from "react";
 
 import selfieImage from "../../public/selfie.png";
+import Sidebar from "./Sidebar";
 
 export default function Header() {
   const [isOpened, setIsOpened] = useState(false);
+
+  const handleClickSidebar = () => {
+    setIsOpened((prevIsOpened) => !prevIsOpened);
+  };
 
   return (
     <>
@@ -43,13 +48,18 @@ export default function Header() {
             </ul>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button className="bg-white flex flex-col justify-center items-center w-6 h-6 focus:outline-none">
+          <div
+            className="md:hidden flex items-center"
+            onClick={() => handleClickSidebar()}
+          >
+            <button className="flex flex-col justify-center items-center w-6 h-6 focus:outline-none">
               <span className="w-5 h-[.125rem] bg-white mb-1"></span>
               <span className="w-5 h-[.125rem] bg-white mb-1"></span>
               <span className="w-5 h-[.125rem] bg-white"></span>
             </button>
           </div>
+
+          {isOpened && <Sidebar handleClickSidebar={handleClickSidebar} />}
         </nav>
       </header>
     </>
