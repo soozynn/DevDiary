@@ -8,7 +8,7 @@ import Footer from "@/containers/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Soozynn | Developer Experience at Vercel and Next.js",
+  title: "soozynn | Developer Experience at Vercel and Next.js",
   description: "soozynn.dev",
 };
 

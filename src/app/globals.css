@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: white;
+.footer-h5 {
+  @apply mb-4 text-xs font-normal leading-tight uppercase tracking-wide opacity-50;
 }
