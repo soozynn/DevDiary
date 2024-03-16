@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "soozynn | About Me",
-  description: "soozynn.dev",
+  title: "About Me",
 };
 
 export default function About() {

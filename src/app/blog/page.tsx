@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "soozynn | My Dev Blog",
-  description: "soozynn.dev",
+  title: "My Dev Blog",
 };
 
 export default function Blog() {
