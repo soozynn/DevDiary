@@ -4,28 +4,45 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Footer() {
-  const [localTime, setLocalTime] = useState(new Date());
+  const [koreanLocalTime, setKoreanLocalTime] = useState({
+    hours: "",
+    minutes: "",
+  });
+  const [koreanLocalTimeAnimate, setKoreanLocalTimeAnimate] = useState(false);
 
   useEffect(() => {
     let requestId: number;
-    let prevMinute: number;
+    let prevMinute = koreanLocalTime.minutes;
 
-    const updateLocalTime = () => {
-      const currentDate = new Date();
+    const updateKoreanLocalTime = () => {
+      const koreanLocalTimeFormatter = new Intl.DateTimeFormat("ko-KR", {
+        timeZone: "Asia/Seoul",
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
       const currentMinute = currentDate.getMinutes();
 
       if (currentMinute !== prevMinute) {
+        console.log("?");
+        setKoreanLocalTimeAnimate(true);
+        setTimeout(() => setKoreanLocalTimeAnimate(false), 500);
+        setKoreanLocalTime((prevKoreanLocalTime) => ({
+          ...prevKoreanLocalTime,
+          hours: currentDate.getHours(),
+          minutes: currentMinute,
+        }));
         prevMinute = currentMinute;
-        setLocalTime(currentDate);
       }
 
-      requestId = requestAnimationFrame(updateLocalTime);
+      requestAnimationFrame(updateKoreanLocalTime);
     };
 
-    requestId = requestAnimationFrame(updateLocalTime);
+    requestId = requestAnimationFrame(updateKoreanLocalTime);
 
     return () => cancelAnimationFrame(requestId);
-  }, [localTime]);
+  }, []);
 
   return (
     <footer className="bg-black text-white fixed bottom-0 w-full">
@@ -44,13 +61,13 @@ export default function Footer() {
               <p>2024 © Edition </p>
             </div>
             <div>
-              <h5 className="mb-2 footer-h5">LOCAL TIME</h5>
-              <span>
-                {localTime.toLocaleTimeString("ko-KR", {
-                  hour12: true,
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+              <h5 className="mb-2 footer-h5">KOREA LOCAL TIME</h5>
+              <span
+                className={`${koreanLocalTimeAnimate ? "animate-slideUp" : ""}`}
+              >
+                <span>{koreanLocalTime.hours}</span>
+                {":"}
+                <span>{koreanLocalTime.minutes}</span>
               </span>
             </div>
           </div>
@@ -66,6 +83,7 @@ export default function Footer() {
             </nav>
           </div>
         </div>
+
         <nav className="pt-2 footer-h5 md:m-0">
           <span>Built with </span>
           <Link href="https://nextjs.org/" target="_blank">

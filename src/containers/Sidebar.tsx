@@ -1,37 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-interface SidebarProps {
-  handleClickSidebar: () => void;
-}
-
-export default function Sidebar({ handleClickSidebar }: SidebarProps) {
-  useEffect(() => {
-    function handleCloseSidebarOnResize() {
-      const viewportWidth = window.innerWidth;
-
-      if (viewportWidth > 768) {
-        handleClickSidebar();
-      }
-    }
-
-    window.addEventListener("resize", handleCloseSidebarOnResize);
-
-    return () => {
-      window.removeEventListener("resize", handleCloseSidebarOnResize);
-    };
-  }, []);
-
+export default function Sidebar() {
   return (
-    <aside className="md:hidden w-1/3 bg-black border-r fixed text-white overflow-y-auto right-0 inset-y-0 z-20">
-      <button
-        className="absolute top-2 right-2 text-white"
-        onClick={() => handleClickSidebar()}
-      >
-        X
-      </button>
+    <main className="md:hidden w-full bg-black border-r fixed text-white overflow-y-auto left-0 inset-y-0 z-20">
       <nav className="">
         <ul>
           <li>
@@ -48,6 +21,6 @@ export default function Sidebar({ handleClickSidebar }: SidebarProps) {
           </li>
         </ul>
       </nav>
-    </aside>
+    </main>
   );
 }

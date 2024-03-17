@@ -5,32 +5,3 @@
 .footer-h5 {
   @apply mb-4 text-xs font-normal leading-tight tracking-wide opacity-50;
 }
-
-.hover\:border {
-  transition: all 0.3s;
-}
-
-.hover\:border:hover {
-  border: 2px solid #4a5568;
-}
-
-.hover\:border::before,
-.hover\:border::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #4a5568;
-  transition: all 0.3s;
-}
-
-.hover\:border:hover::before {
-  left: 0;
-  width: 50%;
-}
-
-.hover\:border:hover::after {
-  right: 0;
-  width: 50%;
-}

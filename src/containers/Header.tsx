@@ -1,19 +1,12 @@
 "use client";
 
+import selfieImage from "../../public/selfie.png";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
-import selfieImage from "../../public/selfie.png";
-import Sidebar from "./Sidebar";
+interface Props {}
 
-export default function Header() {
-  const [isOpened, setIsOpened] = useState(false);
-
-  const handleClickSidebar = () => {
-    setIsOpened((prevIsOpened) => !prevIsOpened);
-  };
-
+export default function Header(props: Props) {
   return (
     <>
       <header className="header bg-black text-white flex fixed top-0 left-0 right-0 items-center z-10 p-5">
@@ -48,18 +41,25 @@ export default function Header() {
             </ul>
           </div>
 
-          <div
+          {/* <div
             className="md:hidden flex items-center"
             onClick={() => handleClickSidebar()}
           >
-            <button className="flex flex-col justify-center items-center w-6 h-6 focus:outline-none">
-              <span className="w-5 h-[.125rem] bg-white mb-1"></span>
-              <span className="w-5 h-[.125rem] bg-white mb-1"></span>
-              <span className="w-5 h-[.125rem] bg-white"></span>
-            </button>
-          </div>
-
-          {isOpened && <Sidebar handleClickSidebar={handleClickSidebar} />}
+            {isOpened ? (
+              <button
+                className="text-white"
+                onClick={() => handleClickSidebar()}
+              >
+                X
+              </button>
+            ) : (
+              <button className="flex flex-col justify-center items-center w-6 h-6 focus:outline-none">
+                <span className="w-5 h-[.125rem] bg-white mb-1"></span>
+                <span className="w-5 h-[.125rem] bg-white mb-1"></span>
+                <span className="w-5 h-[.125rem] bg-white"></span>
+              </button>
+            )}
+          </div> */}
         </nav>
       </header>
     </>
