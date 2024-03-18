@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Footer() {
   const [koreanLocalTime, setKoreanLocalTime] = useState({
+    dayPeriod: "",
     hours: "",
     minutes: "",
   });
@@ -15,25 +16,34 @@ export default function Footer() {
     let prevMinute = koreanLocalTime.minutes;
 
     const updateKoreanLocalTime = () => {
-      const koreanLocalTimeFormatter = new Intl.DateTimeFormat("ko-KR", {
+      const currentKoreanLocalTime = new Intl.DateTimeFormat("ko-KR", {
         timeZone: "Asia/Seoul",
-        hour12: false,
         hour: "2-digit",
         minute: "2-digit",
-      });
+        hour12: true,
+      }).formatToParts(new Date());
 
-      const currentMinute = currentDate.getMinutes();
+      const currentDayPeriod = currentKoreanLocalTime.find(
+        (koreanLocalTime) => koreanLocalTime.type === "dayPeriod",
+      )?.value;
+      const currentHour = currentKoreanLocalTime.find(
+        (koreanLocalTime) => koreanLocalTime.type === "hour",
+      )?.value;
+      const currentMinute = currentKoreanLocalTime.find(
+        (koreanLocalTime) => koreanLocalTime.type === "minute",
+      )?.value;
 
+      console.log(currentHour, currentMinute);
       if (currentMinute !== prevMinute) {
-        console.log("?");
-        setKoreanLocalTimeAnimate(true);
-        setTimeout(() => setKoreanLocalTimeAnimate(false), 500);
         setKoreanLocalTime((prevKoreanLocalTime) => ({
           ...prevKoreanLocalTime,
-          hours: currentDate.getHours(),
-          minutes: currentMinute,
+          dayPeriod: currentDayPeriod || prevKoreanLocalTime.dayPeriod,
+          hours: currentHour || prevKoreanLocalTime.hours,
+          minutes: currentMinute || prevKoreanLocalTime.minutes,
         }));
-        prevMinute = currentMinute;
+        setKoreanLocalTimeAnimate(true);
+        setTimeout(() => setKoreanLocalTimeAnimate(false), 500);
+        prevMinute = currentMinute || koreanLocalTime.minutes;
       }
 
       requestAnimationFrame(updateKoreanLocalTime);
@@ -65,9 +75,8 @@ export default function Footer() {
               <span
                 className={`${koreanLocalTimeAnimate ? "animate-slideUp" : ""}`}
               >
-                <span>{koreanLocalTime.hours}</span>
-                {":"}
-                <span>{koreanLocalTime.minutes}</span>
+                {koreanLocalTime.dayPeriod} {koreanLocalTime.hours}:
+                {koreanLocalTime.minutes}
               </span>
             </div>
           </div>
