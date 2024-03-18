@@ -12,13 +12,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       keyframes: {
-        slideUp: {
+        'slide-up': {
           '0%': { transform: 'translateY(100%)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
       animation: {
-        slideUp: 'slideUp 0.5s ease-out forwards',
+        slideUp: 'slide-up 0.7s forwards',
       },
     },
   },

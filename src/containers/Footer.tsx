@@ -1,49 +1,77 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Footer() {
-  const [koreanLocalTime, setKoreanLocalTime] = useState({
+  const [time, setTime] = useState({
     dayPeriod: "",
-    hours: "",
-    minutes: "",
+    hourTens: "",
+    hourOnes: "",
+    minuteTens: "",
+    minuteOnes: "",
   });
-  const [koreanLocalTimeAnimate, setKoreanLocalTimeAnimate] = useState(false);
+  const [animate, setAnimate] = useState({
+    hourTens: false,
+    hourOnes: false,
+    minuteTens: false,
+    minuteOnes: false,
+  });
+  const prevMinute = useRef("");
 
   useEffect(() => {
     let requestId: number;
-    let prevMinute = koreanLocalTime.minutes;
 
     const updateKoreanLocalTime = () => {
-      const currentKoreanLocalTime = new Intl.DateTimeFormat("ko-KR", {
+      const formatterKoreanTime = new Intl.DateTimeFormat("ko-KR", {
         timeZone: "Asia/Seoul",
         hour: "2-digit",
         minute: "2-digit",
         hour12: true,
       }).formatToParts(new Date());
 
-      const currentDayPeriod = currentKoreanLocalTime.find(
-        (koreanLocalTime) => koreanLocalTime.type === "dayPeriod",
-      )?.value;
-      const currentHour = currentKoreanLocalTime.find(
-        (koreanLocalTime) => koreanLocalTime.type === "hour",
-      )?.value;
-      const currentMinute = currentKoreanLocalTime.find(
-        (koreanLocalTime) => koreanLocalTime.type === "minute",
-      )?.value;
+      const getTimeValue = (type: string) => {
+        const part =
+          formatterKoreanTime.find((part) => part.type === type)?.value || "00";
+        return part.padStart(2, "0");
+      };
 
-      console.log(currentHour, currentMinute);
-      if (currentMinute !== prevMinute) {
-        setKoreanLocalTime((prevKoreanLocalTime) => ({
-          ...prevKoreanLocalTime,
-          dayPeriod: currentDayPeriod || prevKoreanLocalTime.dayPeriod,
-          hours: currentHour || prevKoreanLocalTime.hours,
-          minutes: currentMinute || prevKoreanLocalTime.minutes,
-        }));
-        setKoreanLocalTimeAnimate(true);
-        setTimeout(() => setKoreanLocalTimeAnimate(false), 500);
-        prevMinute = currentMinute || koreanLocalTime.minutes;
+      const newTime = {
+        dayPeriod:
+          formatterKoreanTime.find(
+            (koreanTime) => koreanTime.type === "dayPeriod",
+          )?.value || "",
+        hourTens: getTimeValue("hour")[0],
+        hourOnes: getTimeValue("hour")[1],
+        minuteTens: getTimeValue("minute")[0],
+        minuteOnes: getTimeValue("minute")[1],
+      };
+
+      const currentMinutes = newTime.minuteTens.concat(newTime.minuteOnes);
+
+      if (currentMinutes !== prevMinute.current) {
+        console.log("?");
+        setTime(newTime);
+
+        const newAnimate = {
+          hourTens: newTime.hourTens !== time.hourTens,
+          hourOnes: newTime.hourOnes !== time.hourOnes,
+          minuteTens: newTime.minuteTens !== time.minuteTens,
+          minuteOnes: newTime.minuteOnes !== time.minuteOnes,
+        };
+        setAnimate(newAnimate);
+        setTimeout(
+          () =>
+            setAnimate({
+              hourTens: false,
+              hourOnes: false,
+              minuteTens: false,
+              minuteOnes: false,
+            }),
+          500,
+        );
+
+        prevMinute.current = currentMinutes;
       }
 
       requestAnimationFrame(updateKoreanLocalTime);
@@ -72,11 +100,29 @@ export default function Footer() {
             </div>
             <div>
               <h5 className="mb-2 footer-h5">KOREA LOCAL TIME</h5>
-              <span
-                className={`${koreanLocalTimeAnimate ? "animate-slideUp" : ""}`}
-              >
-                {koreanLocalTime.dayPeriod} {koreanLocalTime.hours}:
-                {koreanLocalTime.minutes}
+              <span>
+                {time.dayPeriod}{" "}
+                <span
+                  className={`${animate.hourTens ? "animate-slide-up" : ""}`}
+                >
+                  {time.hourTens}
+                </span>
+                <span
+                  className={`${animate.hourOnes ? "animate-slide-up" : ""}`}
+                >
+                  {time.hourOnes}
+                </span>
+                :
+                <span
+                  className={`${animate.minuteTens ? "animate-slide-up" : ""}`}
+                >
+                  {time.minuteTens}
+                </span>
+                <span
+                  className={`${animate.minuteOnes ? "animate-slide-up" : ""}`}
+                >
+                  {time.minuteOnes}
+                </span>
               </span>
             </div>
           </div>
