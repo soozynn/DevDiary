@@ -4,9 +4,13 @@ import selfieImage from "../../public/selfie.png";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Props {}
-
-export default function Header(props: Props) {
+export default function Header({
+  isOpenedSidebar,
+  handleClickSidebarButton,
+}: {
+  isOpenedSidebar: boolean;
+  handleClickSidebarButton: () => void;
+}) {
   return (
     <>
       <header className="header bg-black text-white flex fixed top-0 left-0 right-0 items-center z-10 p-5">
@@ -41,14 +45,14 @@ export default function Header(props: Props) {
             </ul>
           </div>
 
-          {/* <div
+          <div
             className="md:hidden flex items-center"
-            onClick={() => handleClickSidebar()}
+            onClick={() => handleClickSidebarButton()}
           >
-            {isOpened ? (
+            {isOpenedSidebar ? (
               <button
                 className="text-white"
-                onClick={() => handleClickSidebar()}
+                onClick={() => handleClickSidebarButton()}
               >
                 X
               </button>
@@ -59,7 +63,7 @@ export default function Header(props: Props) {
                 <span className="w-5 h-[.125rem] bg-white"></span>
               </button>
             )}
-          </div> */}
+          </div>
         </nav>
       </header>
     </>
