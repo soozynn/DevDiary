@@ -18,7 +18,7 @@ const config: Config = {
         },
       },
       animation: {
-        slideUp: 'slide-up 0.7s forwards',
+        slideUp: 'slide-up 3s forwards',
       },
     },
   },

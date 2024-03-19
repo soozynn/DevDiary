@@ -17,10 +17,11 @@ export default function Footer() {
     minuteTens: false,
     minuteOnes: false,
   });
-  const prevMinute = useRef("");
+  const timeRef = useRef(time);
 
   useEffect(() => {
-    let requestId: number;
+    let requestID: number;
+    let timeoutID: number;
 
     const updateKoreanLocalTime = () => {
       const formatterKoreanTime = new Intl.DateTimeFormat("ko-KR", {
@@ -48,19 +49,22 @@ export default function Footer() {
       };
 
       const currentMinutes = newTime.minuteTens.concat(newTime.minuteOnes);
+      const prevMinutes = timeRef.current.minuteTens.concat(
+        timeRef.current.minuteOnes,
+      );
 
-      if (currentMinutes !== prevMinute.current) {
-        console.log("?");
+      if (currentMinutes !== prevMinutes) {
         setTime(newTime);
 
         const newAnimate = {
-          hourTens: newTime.hourTens !== time.hourTens,
-          hourOnes: newTime.hourOnes !== time.hourOnes,
-          minuteTens: newTime.minuteTens !== time.minuteTens,
-          minuteOnes: newTime.minuteOnes !== time.minuteOnes,
+          hourTens: newTime.hourTens !== timeRef.current.hourTens,
+          hourOnes: newTime.hourOnes !== timeRef.current.hourOnes,
+          minuteTens: newTime.minuteTens !== timeRef.current.minuteTens,
+          minuteOnes: newTime.minuteOnes !== timeRef.current.minuteOnes,
         };
+
         setAnimate(newAnimate);
-        setTimeout(
+        timeoutID = window.setTimeout(
           () =>
             setAnimate({
               hourTens: false,
@@ -68,18 +72,21 @@ export default function Footer() {
               minuteTens: false,
               minuteOnes: false,
             }),
-          500,
+          3000,
         );
 
-        prevMinute.current = currentMinutes;
+        timeRef.current = newTime;
       }
 
       requestAnimationFrame(updateKoreanLocalTime);
     };
 
-    requestId = requestAnimationFrame(updateKoreanLocalTime);
+    requestID = requestAnimationFrame(updateKoreanLocalTime);
 
-    return () => cancelAnimationFrame(requestId);
+    return () => {
+      cancelAnimationFrame(requestID);
+      clearTimeout(timeoutID);
+    };
   }, []);
 
   return (

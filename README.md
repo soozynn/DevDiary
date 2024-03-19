@@ -14,6 +14,8 @@ https://soozynn.vercel.app
   해당 API에 대해 잘 정리해둔 블로그가 있어 다시보기용으로 링크를 첨부해둔다.
   블로그[https://inpa.tistory.com/entry/%F0%9F%8C%90-requestAnimationFrame-%EA%B0%80%EC%9D%B4%EB%93%9C]
 
-  > Intl.DateTimeFormat API
+> Intl.DateTimeFormat API
 
 - 기능을 구현하기 전에 mdn을 통해서 업데이트된 내역이 있는지 한번씩 확인하면서 작업을 하는 편인데, toLocaleTimeString API를 사용하려다가 Intl.DateTimeFormat API를 보게되었다. 로케일스트링은 현지화 문자열의 대규모 데이터베이스에서 검색을 수행해야하기에 잠재적으로 비효율적이라고 적혀있었다. 동일한 인수로 메서드가 여러 번 호출되는 경우 개체를 만들고 Intl.DateTimeFormat API 사용을 권장하고 있어 서울의 시간을 포맷팅할 때 이 API로 교체해주었다.
+
+> useEffect의 캡처, useRef의 사용
