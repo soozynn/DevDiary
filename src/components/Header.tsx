@@ -47,20 +47,28 @@ export default function Header({
 
           <div
             className="md:hidden flex items-center"
-            onClick={() => handleClickSidebarButton()}
+            onClick={handleClickSidebarButton}
           >
             {isOpenedSidebar ? (
-              <button
-                className="text-white"
-                onClick={() => handleClickSidebarButton()}
-              >
-                X
+              <button className="relative flex justify-center items-center w-6 h-6 focus:outline-none">
+                <span
+                  className={`absolute block w-5 h-0.5 bg-white transition-transform duration-300 ${isOpenedSidebar ? "transform rotate-45" : ""}`}
+                ></span>
+                <span
+                  className={`absolute block w-5 h-0.5 bg-white transition-transform duration-300 ${isOpenedSidebar ? "transform -rotate-45" : "mt-1"}`}
+                ></span>
               </button>
             ) : (
-              <button className="flex flex-col justify-center items-center w-6 h-6 focus:outline-none">
-                <span className="w-5 h-[.125rem] bg-white mb-1"></span>
-                <span className="w-5 h-[.125rem] bg-white mb-1"></span>
-                <span className="w-5 h-[.125rem] bg-white"></span>
+              <button className="relative flex justify-center items-center w-6 h-6 focus:outline-none">
+                <span
+                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "rotate-45" : "-translate-y-1.5"}`}
+                ></span>
+                <span
+                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "-rotate-45" : "translate-y-1.5"}`}
+                ></span>
+                <span
+                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "opacity-0" : "opacity-100"}`}
+                ></span>
               </button>
             )}
           </div>
