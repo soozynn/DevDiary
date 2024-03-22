@@ -1,6 +1,7 @@
 "use client";
 
 import selfieImage from "../../public/selfie.png";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ export default function Header({
   isOpenedSidebar: boolean;
   toggleSidebar: () => void;
 }) {
-  const { isBrightTheme, handleClickBrightThemeButton } = useThemeContext();
+  const { isBrightTheme, toggleTheme } = useThemeContext();
   return (
     <>
       <header className="bg-black text-white flex sticky top-0 left-0 right-0 items-center z-10 p-5">
