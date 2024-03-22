@@ -1,9 +1,11 @@
 "use client";
 
+import ThemeBrightness from "@/components/ThemeBrightness";
 import { MOBILE_SIZE } from "@/constants";
 import Footer from "@/containers/Footer";
 import Header from "@/containers/Header";
 import Sidebar from "@/containers/Sidebar";
+import { ThemeBrightnessContext } from "@/contexts/ThemeBrightnessContext";
 import { useEffect, useState } from "react";
 
 export default function MainLayout({
@@ -12,9 +14,14 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);
+  const [isBrightTheme, setIsBrightTheme] = useState(false);
 
   const handleClickSidebarButton = () => {
     setIsOpenedSidebar(!isOpenedSidebar);
+  };
+
+  const handleClickBrightThemeButton = () => {
+    setIsBrightTheme(!isBrightTheme);
   };
 
   useEffect(() => {
@@ -30,7 +37,9 @@ export default function MainLayout({
   }, []);
 
   return (
-    <>
+    <ThemeBrightnessContext.Provider
+      value={{ isBrightTheme, handleClickBrightThemeButton }}
+    >
       <Header
         isOpenedSidebar={isOpenedSidebar}
         handleClickSidebarButton={handleClickSidebarButton}
@@ -42,6 +51,7 @@ export default function MainLayout({
       )}
       <main>{children}</main>
       <Footer />
-    </>
+      <ThemeBrightness />
+    </ThemeBrightnessContext.Provider>
   );
 }
