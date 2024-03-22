@@ -1,6 +1,7 @@
 "use client";
 
-import SocialLinks from "@/components/SocialLinks";
+import Links from "@/components/Links";
+import SocialLinks from "@/containers/SocialLinks";
 import TimeDisplay from "@/containers/TimeDisplay";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
@@ -118,16 +119,10 @@ export default function Footer() {
 
         <nav className="pt-2 footer-h5 md:m-0">
           <span>Built with </span>
-          <Link href="https://nextjs.org" target="_blank">
-            Next.js,{" "}
-          </Link>
-          <Link href="https://tailwindcss.com" target="_blank">
-            Tailwind
-          </Link>
+          <Links text={"Next.js, "} link={"https://nextjs.org"} />
+          <Links text={"Tailwind"} link={"https://tailwindcss.com"} />
           <span> and </span>
-          <Link href="https://vercel.com" target="_blank">
-            Vercel
-          </Link>
+          <Links text={"Vercel"} link={"https://vercel.com"} />
         </nav>
       </div>
     </footer>
