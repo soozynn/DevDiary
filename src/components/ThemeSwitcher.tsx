@@ -1,10 +1,9 @@
-import useThemeBrightnessContext from "@/contexts/ThemeBrightnessContext";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import MoonIcon from "@/svg/MoonIcon";
 import SunIcon from "@/svg/SunIcon";
 
 export default function ThemeBrightness() {
-  const { isBrightTheme, handleClickBrightThemeButton } =
-    useThemeBrightnessContext();
+  const { isBrightTheme, toggleTheme } = useThemeContext();
 
   return (
     <div
@@ -13,14 +12,14 @@ export default function ThemeBrightness() {
       <button
         aria-label="밝은 테마로 전환"
         className={`${isBrightTheme ? "bg-[#e6e6e6]" : "bg-gray-900"} rounded-full`}
-        onClick={handleClickBrightThemeButton}
+        onClick={toggleTheme}
       >
         <SunIcon color={`${isBrightTheme ? "#414141" : "#555"}`} />
       </button>
       <button
         aria-label="어두운 테마로 전환"
         className={`${isBrightTheme ? "" : "bg-[#292929]"} rounded-full`}
-        onClick={handleClickBrightThemeButton}
+        onClick={toggleTheme}
       >
         <MoonIcon color={`${isBrightTheme ? "#414141" : "#cbcbcb"}`} />
       </button>

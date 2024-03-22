@@ -5,3 +5,11 @@
 .footer-h5 {
   @apply mb-4 text-xs font-normal leading-tight tracking-wide opacity-50;
 }
+
+.light-theme {
+  @apply bg-white text-black;
+}
+
+.dark-theme {
+  @apply bg-black text-white;
+}

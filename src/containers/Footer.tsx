@@ -3,7 +3,6 @@
 import Links from "@/components/Links";
 import SocialLinks from "@/containers/SocialLinks";
 import TimeDisplay from "@/containers/TimeDisplay";
-import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 export default function Footer() {

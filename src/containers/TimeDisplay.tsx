@@ -1,4 +1,5 @@
 import TimePart from "@/components/TimePart";
+import React from "react";
 
 interface Time {
   dayPeriod: string;
@@ -20,7 +21,7 @@ interface TimeDisplayProps {
   animate: Animate;
 }
 
-export default function TimeDisplay({ time, animate }: TimeDisplayProps) {
+function TimeDisplay({ time, animate }: TimeDisplayProps) {
   return (
     <>
       <span>
@@ -34,3 +35,5 @@ export default function TimeDisplay({ time, animate }: TimeDisplayProps) {
     </>
   );
 }
+
+export default React.memo(TimeDisplay);

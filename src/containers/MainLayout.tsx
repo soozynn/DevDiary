@@ -1,11 +1,11 @@
 "use client";
 
-import ThemeBrightness from "@/components/ThemeBrightness";
+import ThemeBrightness from "@/components/ThemeSwitcher";
 import { MOBILE_SIZE } from "@/constants";
 import Footer from "@/containers/Footer";
 import Header from "@/containers/Header";
 import Sidebar from "@/containers/Sidebar";
-import { ThemeBrightnessContext } from "@/contexts/ThemeBrightnessContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { useEffect, useState } from "react";
 
 export default function MainLayout({
@@ -14,14 +14,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);
-  const [isBrightTheme, setIsBrightTheme] = useState(false);
 
-  const handleClickSidebarButton = () => {
+  const toggleSidebar = () => {
     setIsOpenedSidebar(!isOpenedSidebar);
-  };
-
-  const handleClickBrightThemeButton = () => {
-    setIsBrightTheme(!isBrightTheme);
   };
 
   useEffect(() => {
@@ -37,13 +32,8 @@ export default function MainLayout({
   }, []);
 
   return (
-    <ThemeBrightnessContext.Provider
-      value={{ isBrightTheme, handleClickBrightThemeButton }}
-    >
-      <Header
-        isOpenedSidebar={isOpenedSidebar}
-        handleClickSidebarButton={handleClickSidebarButton}
-      />
+    <ThemeProvider>
+      <Header isOpenedSidebar={isOpenedSidebar} toggleSidebar={toggleSidebar} />
       {isOpenedSidebar && (
         <div className="top-[4.375rem] fixed flex w-full h-full left-0 z-20">
           <Sidebar />
@@ -52,6 +42,6 @@ export default function MainLayout({
       <main>{children}</main>
       <Footer />
       <ThemeBrightness />
-    </ThemeBrightnessContext.Provider>
+    </ThemeProvider>
   );
 }

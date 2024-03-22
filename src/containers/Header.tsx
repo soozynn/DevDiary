@@ -6,11 +6,12 @@ import Link from "next/link";
 
 export default function Header({
   isOpenedSidebar,
-  handleClickSidebarButton,
+  toggleSidebar,
 }: {
   isOpenedSidebar: boolean;
-  handleClickSidebarButton: () => void;
+  toggleSidebar: () => void;
 }) {
+  const { isBrightTheme, handleClickBrightThemeButton } = useThemeContext();
   return (
     <>
       <header className="bg-black text-white flex sticky top-0 left-0 right-0 items-center z-10 p-5">
@@ -45,10 +46,7 @@ export default function Header({
             </ul>
           </div>
 
-          <div
-            className="md:hidden flex items-center"
-            onClick={handleClickSidebarButton}
-          >
+          <div className="md:hidden flex items-center" onClick={toggleSidebar}>
             {isOpenedSidebar ? (
               <button className="relative flex justify-center items-center w-6 h-6 focus:outline-none">
                 <span
