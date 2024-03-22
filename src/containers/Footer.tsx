@@ -1,5 +1,6 @@
 "use client";
 
+import TimeDisplay from "@/components/TimeDisplay";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
@@ -104,6 +105,7 @@ export default function Footer() {
               </Link>
             </nav>
           </div>
+
           <div className="flex gap-10 pt-8 pb-5 md:pt-0 justify-between">
             <div>
               <h5 className="mb-2 footer-h5">VERSION</h5>
@@ -111,30 +113,7 @@ export default function Footer() {
             </div>
             <div>
               <h5 className="mb-2 footer-h5">KOREA LOCAL TIME</h5>
-              <span>
-                {time.dayPeriod}{" "}
-                <span
-                  className={`${animate.hourTens ? "animate-fade-in-down" : ""}`}
-                >
-                  {time.hourTens}
-                </span>
-                <span
-                  className={`${animate.hourOnes ? "animate-fade-in-down" : ""}`}
-                >
-                  {time.hourOnes}
-                </span>
-                :
-                <span
-                  className={`${animate.minuteTens ? "animate-fade-in-down" : ""}`}
-                >
-                  {time.minuteTens}
-                </span>
-                <span
-                  className={`${animate.minuteOnes ? "animate-fade-in-down" : ""}`}
-                >
-                  {time.minuteOnes}
-                </span>
-              </span>
+              <TimeDisplay animate={animate} time={time} />
             </div>
           </div>
           <div className="md:block hidden">
@@ -152,14 +131,14 @@ export default function Footer() {
 
         <nav className="pt-2 footer-h5 md:m-0">
           <span>Built with </span>
-          <Link href="https://nextjs.org/" target="_blank">
+          <Link href="https://nextjs.org" target="_blank">
             Next.js,{" "}
           </Link>
-          <Link href="https://tailwindcss.com/" target="_blank">
+          <Link href="https://tailwindcss.com" target="_blank">
             Tailwind
           </Link>
           <span> and </span>
-          <Link href="https://vercel.com/" target="_blank">
+          <Link href="https://vercel.com" target="_blank">
             Vercel
           </Link>
         </nav>

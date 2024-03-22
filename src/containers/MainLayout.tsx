@@ -1,9 +1,9 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
 import { MOBILE_SIZE } from "@/constants";
+import Footer from "@/containers/Footer";
+import Header from "@/containers/Header";
+import Sidebar from "@/containers/Sidebar";
 import { useEffect, useState } from "react";
 
 export default function MainLayout({
