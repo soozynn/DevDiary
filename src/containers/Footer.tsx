@@ -1,6 +1,7 @@
 "use client";
 
-import TimeDisplay from "@/components/TimeDisplay";
+import SocialLinks from "@/components/SocialLinks";
+import TimeDisplay from "@/containers/TimeDisplay";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
@@ -96,14 +97,7 @@ export default function Footer() {
         <div className="md:flex justify-between md:divide-none divide-y divide-[#727274]">
           <div className="md:hidden pt-5 pb-8">
             <h5 className="mb-2 footer-h5">SOCIALS</h5>
-            <nav className="flex gap-4">
-              <Link href="https://velog.io/@serenity/posts" target="_blank">
-                Posts
-              </Link>
-              <Link href="https://github.com/soozynn" target="_blank">
-                GitHub
-              </Link>
-            </nav>
+            <SocialLinks />
           </div>
 
           <div className="flex gap-10 pt-8 pb-5 md:pt-0 justify-between">
@@ -118,14 +112,7 @@ export default function Footer() {
           </div>
           <div className="md:block hidden">
             <h5 className="mb-2 footer-h5">SOCIALS</h5>
-            <nav className="flex gap-4">
-              <Link href="https://velog.io/@serenity/posts" target="_blank">
-                Posts
-              </Link>
-              <Link href="https://github.com/soozynn" target="_blank">
-                GitHub
-              </Link>
-            </nav>
+            <SocialLinks />
           </div>
         </div>
 

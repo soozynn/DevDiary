@@ -1,7 +1,7 @@
 export default function SunIcon({ color = "currentColor" }) {
   return (
     <svg
-      enable-background="new 0 0 512 512"
+      enableBackground="new 0 0 512 512"
       id="Layer_1"
       version="1.1"
       viewBox="0 0 512 512"

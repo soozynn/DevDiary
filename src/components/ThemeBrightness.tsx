@@ -18,7 +18,7 @@ export default function ThemeBrightness() {
         <SunIcon color={`${isBrightTheme ? "#414141" : "#555"}`} />
       </button>
       <button
-        aria-aria-label="어두운 테마로 전환"
+        aria-label="어두운 테마로 전환"
         className={`${isBrightTheme ? "" : "bg-[#292929]"} rounded-full`}
         onClick={handleClickBrightThemeButton}
       >
