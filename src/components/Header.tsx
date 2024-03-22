@@ -13,7 +13,7 @@ export default function Header({
 }) {
   return (
     <>
-      <header className="header bg-black text-white flex fixed top-0 left-0 right-0 items-center z-10 p-5">
+      <header className="bg-black text-white flex sticky top-0 left-0 right-0 items-center z-10 p-5">
         <nav className="flex justify-between w-full">
           <Link href="/" className="flex gap-2">
             <Image

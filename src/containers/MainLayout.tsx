@@ -3,8 +3,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import { SidebarContext } from "@/contexts/SidebarContext";
-import { useState } from "react";
+import { MOBILE_SIZE } from "@/constants";
+import { useEffect, useState } from "react";
 
 export default function MainLayout({
   children,
@@ -17,6 +17,18 @@ export default function MainLayout({
     setIsOpenedSidebar(!isOpenedSidebar);
   };
 
+  useEffect(() => {
+    const closeSidebar = () => {
+      if (window.innerWidth >= MOBILE_SIZE) {
+        setIsOpenedSidebar(false);
+      }
+    };
+
+    window.addEventListener("resize", closeSidebar);
+
+    return () => window.removeEventListener("resize", closeSidebar);
+  }, []);
+
   return (
     <>
       <Header
@@ -24,7 +36,7 @@ export default function MainLayout({
         handleClickSidebarButton={handleClickSidebarButton}
       />
       {isOpenedSidebar && (
-        <div className="top-[4.375rem] absolute flex w-full h-full left-0 z-20">
+        <div className="top-[4.375rem] fixed flex w-full h-full left-0 z-20">
           <Sidebar />
         </div>
       )}
