@@ -72,7 +72,7 @@ export default function Footer() {
               minuteTens: false,
               minuteOnes: false,
             }),
-          3000,
+          5000,
         );
 
         timeRef.current = newTime;
@@ -96,8 +96,12 @@ export default function Footer() {
           <div className="md:hidden pt-5 pb-8">
             <h5 className="mb-2 footer-h5">SOCIALS</h5>
             <nav className="flex gap-4">
-              <Link href="https://velog.io/@serenity/posts">Posts</Link>
-              <Link href="https://github.com/soozynn">GitHub</Link>
+              <Link href="https://velog.io/@serenity/posts" target="_blank">
+                Posts
+              </Link>
+              <Link href="https://github.com/soozynn" target="_blank">
+                GitHub
+              </Link>
             </nav>
           </div>
           <div className="flex gap-10 pt-8 pb-5 md:pt-0 justify-between">
@@ -110,23 +114,23 @@ export default function Footer() {
               <span>
                 {time.dayPeriod}{" "}
                 <span
-                  className={`${animate.hourTens ? "animate-slide-up" : ""}`}
+                  className={`${animate.hourTens ? "animate-fade-in-down" : ""}`}
                 >
                   {time.hourTens}
                 </span>
                 <span
-                  className={`${animate.hourOnes ? "animate-slide-up" : ""}`}
+                  className={`${animate.hourOnes ? "animate-fade-in-down" : ""}`}
                 >
                   {time.hourOnes}
                 </span>
                 :
                 <span
-                  className={`${animate.minuteTens ? "animate-slide-up" : ""}`}
+                  className={`${animate.minuteTens ? "animate-fade-in-down" : ""}`}
                 >
                   {time.minuteTens}
                 </span>
                 <span
-                  className={`${animate.minuteOnes ? "animate-slide-up" : ""}`}
+                  className={`${animate.minuteOnes ? "animate-fade-in-down" : ""}`}
                 >
                   {time.minuteOnes}
                 </span>

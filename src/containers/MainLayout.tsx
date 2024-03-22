@@ -23,9 +23,11 @@ export default function MainLayout({
         isOpenedSidebar={isOpenedSidebar}
         handleClickSidebarButton={handleClickSidebarButton}
       />
-      <div className="top-[4.375rem] absolute flex w-full h-full left-0 z-20">
-        {isOpenedSidebar && <Sidebar />}
-      </div>
+      {isOpenedSidebar && (
+        <div className="top-[4.375rem] absolute flex w-full h-full left-0 z-20">
+          <Sidebar />
+        </div>
+      )}
       <main>{children}</main>
       <Footer />
     </>
