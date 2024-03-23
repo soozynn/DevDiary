@@ -13,7 +13,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [isBrightTheme, setIsBrightTheme] = useState(false);
 
   const toggleTheme = () => {
-    setIsBrightTheme(!isBrightTheme);
+    setIsBrightTheme((prevState) => !prevState);
   };
 
   return (

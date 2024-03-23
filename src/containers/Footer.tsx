@@ -22,6 +22,7 @@ export default function Footer() {
   const timeRef = useRef(time);
 
   useEffect(() => {
+    // eslint-disable-next-line prefer-const
     let requestID: number;
     let timeoutID: number;
 

@@ -20,7 +20,7 @@ export default function MainLayout({
   const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);
 
   const toggleSidebar = () => {
-    setIsOpenedSidebar(!isOpenedSidebar);
+    setIsOpenedSidebar((prevState) => !prevState);
   };
 
   useEffect(() => {
