@@ -17,7 +17,7 @@ export default function Header({
   return (
     <>
       <header
-        className={`${isBrightTheme ? "light-theme" : "dark-theme"} flex sticky top-0 left-0 right-0 items-center z-10 p-5`}
+        className={`${isBrightTheme ? "light-theme border-b border-b-gray-200" : "dark-theme"} flex sticky top-0 left-0 right-0 items-center z-10 p-5`}
       >
         <nav className="flex justify-between w-full">
           <Link href="/" className="flex gap-2">
@@ -54,22 +54,22 @@ export default function Header({
             {isOpenedSidebar ? (
               <button className="relative flex justify-center items-center w-6 h-6 focus:outline-none">
                 <span
-                  className={`absolute block w-5 h-0.5 bg-white transition-transform duration-300 ${isOpenedSidebar ? "transform rotate-45" : ""}`}
+                  className={`absolute block w-5 h-0.5 ${isBrightTheme ? "dark-theme" : "light-theme"} transition-transform duration-300 ${isOpenedSidebar ? "transform rotate-45" : ""}`}
                 ></span>
                 <span
-                  className={`absolute block w-5 h-0.5 bg-white transition-transform duration-300 ${isOpenedSidebar ? "transform -rotate-45" : "mt-1"}`}
+                  className={`absolute block w-5 h-0.5 ${isBrightTheme ? "dark-theme" : "light-theme"} transition-transform duration-300 ${isOpenedSidebar ? "transform -rotate-45" : "mt-1"}`}
                 ></span>
               </button>
             ) : (
               <button className="relative flex justify-center items-center w-6 h-6 focus:outline-none">
                 <span
-                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "rotate-45" : "-translate-y-1.5"}`}
+                  className={`absolute block w-5 h-0.5 ${isBrightTheme ? "dark-theme" : "light-theme"} transform transition duration-300 ${isOpenedSidebar ? "rotate-45" : "-translate-y-1.5"}`}
                 ></span>
                 <span
-                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "-rotate-45" : "translate-y-1.5"}`}
+                  className={`absolute block w-5 h-0.5 ${isBrightTheme ? "dark-theme" : "light-theme"} transform transition duration-300 ${isOpenedSidebar ? "-rotate-45" : "translate-y-1.5"}`}
                 ></span>
                 <span
-                  className={`absolute block w-5 h-0.5 bg-white transform transition duration-300 ${isOpenedSidebar ? "opacity-0" : "opacity-100"}`}
+                  className={`absolute block w-5 h-0.5 ${isBrightTheme ? "dark-theme" : "light-theme"} transform transition duration-300 ${isOpenedSidebar ? "opacity-0" : "opacity-100"}`}
                 ></span>
               </button>
             )}

@@ -38,7 +38,7 @@ export default function MainLayout({
   }, []);
 
   useEffect(() => {
-    toggleSidebar();
+    setIsOpenedSidebar(false);
   }, [pathname, searchParams]);
 
   return (

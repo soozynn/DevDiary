@@ -3,9 +3,12 @@
 import Links from "@/components/Links";
 import SocialLinks from "@/containers/SocialLinks";
 import TimeDisplay from "@/containers/TimeDisplay";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import { useEffect, useState, useRef } from "react";
 
 export default function Footer() {
+  const { isBrightTheme } = useThemeContext();
+
   const [time, setTime] = useState({
     dayPeriod: "",
     hourTens: "",
@@ -22,7 +25,6 @@ export default function Footer() {
   const timeRef = useRef(time);
 
   useEffect(() => {
-    // eslint-disable-next-line prefer-const
     let requestID: number;
     let timeoutID: number;
 
@@ -93,7 +95,9 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-black text-white fixed bottom-0 w-full">
+    <footer
+      className={`${isBrightTheme ? "light-theme border-t border-t-gray-200" : "dark-theme"} fixed bottom-0 w-full`}
+    >
       <div className="md:py-10 px-10 py-6">
         <div className="md:flex justify-between md:divide-none divide-y divide-[#727274]">
           <div className="md:hidden pt-5 pb-8">
