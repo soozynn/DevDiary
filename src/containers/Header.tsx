@@ -13,6 +13,7 @@ export default function Header({
   toggleSidebar: () => void;
 }) {
   const { isBrightTheme, toggleTheme } = useThemeContext();
+
   return (
     <>
       <header className="bg-black text-white flex sticky top-0 left-0 right-0 items-center z-10 p-5">

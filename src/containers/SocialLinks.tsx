@@ -1,5 +1,4 @@
-import Links from "../components/Links";
-import Link from "next/link";
+import Links from "@/components/Links";
 import React from "react";
 
 function SocialLinks() {
