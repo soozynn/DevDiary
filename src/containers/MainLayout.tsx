@@ -6,6 +6,7 @@ import Footer from "@/containers/Footer";
 import Header from "@/containers/Header";
 import Sidebar from "@/containers/Sidebar";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function MainLayout({
@@ -13,6 +14,9 @@ export default function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);
 
   const toggleSidebar = () => {
@@ -28,8 +32,14 @@ export default function MainLayout({
 
     window.addEventListener("resize", closeSidebar);
 
-    return () => window.removeEventListener("resize", closeSidebar);
+    return () => {
+      window.removeEventListener("resize", closeSidebar);
+    };
   }, []);
+
+  useEffect(() => {
+    toggleSidebar();
+  }, [pathname, searchParams]);
 
   return (
     <ThemeProvider>

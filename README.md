@@ -12,7 +12,7 @@ https://soozynn.vercel.app
   useEffect내에서 requestAnimationFrame를 등록해주어 시간이 업데이트 될 때마다 브라우저가 리페인트 할 때에 맞춰 시간을 업데이트 해줌으로써 타이머 드리프트 문제를 해결했다.
 
   해당 API에 대해 잘 정리해둔 블로그가 있어 다시보기용으로 링크를 첨부해둔다.
-  블로그[https://inpa.tistory.com/entry/%F0%9F%8C%90-requestAnimationFrame-%EA%B0%80%EC%9D%B4%EB%93%9C]
+  [블로그](https://inpa.tistory.com/entry/%F0%9F%8C%90-requestAnimationFrame-%EA%B0%80%EC%9D%B4%EB%93%9C)
 
 > Intl.DateTimeFormat API
 

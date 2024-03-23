@@ -1,6 +1,6 @@
 "use client";
 
-import selfieImage from "../../public/selfie.png";
+import SelfieImage from "../../public/selfie.png";
 import { useThemeContext } from "@/contexts/ThemeContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default function Header({
         <nav className="flex justify-between w-full">
           <Link href="/" className="flex gap-2">
             <Image
-              src={selfieImage}
+              src={SelfieImage}
               alt="A photo of soozynn"
               width={30}
               height={30}
