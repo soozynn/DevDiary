@@ -1,4 +1,4 @@
-import TimePart from "@/components/TimePart";
+import TimePart from "@/components/TimePart.server";
 import React from "react";
 
 interface Time {

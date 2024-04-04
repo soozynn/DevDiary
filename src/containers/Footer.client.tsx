@@ -1,8 +1,8 @@
 "use client";
 
-import Links from "@/components/Links";
-import SocialLinks from "@/containers/SocialLinks";
-import TimeDisplay from "@/containers/TimeDisplay";
+import Links from "@/components/Links.server";
+import SocialLinks from "@/containers/SocialLinks.server";
+import TimeDisplay from "@/containers/TimeDisplay.server";
 import { useThemeContext } from "@/contexts/ThemeContext.client";
 import { useEffect, useState, useRef } from "react";
 

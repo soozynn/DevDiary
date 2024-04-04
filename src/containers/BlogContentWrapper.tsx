@@ -31,7 +31,7 @@ export default function BlogContentWrapper() {
   // const variables = {
   //   input: {
   //     cursor: "",
-  //     username: process.env.NEXT_PUBLIC_USER_NAME!,
+  //     username: process.env.VELOG_USER_NAME!,
   //     limit: 10,
   //     tag: "",
   //   },

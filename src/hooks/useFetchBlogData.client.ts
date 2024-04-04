@@ -29,7 +29,7 @@ export default function useFetchBlogData(
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL!, {
+        const response = await fetch("https://v3.velog.io/graphql", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

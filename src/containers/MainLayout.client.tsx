@@ -1,10 +1,10 @@
 "use client";
 
-import ThemeBrightness from "@/components/ThemeSwitcher";
+import ThemeBrightness from "@/components/ThemeSwitcher.server";
 import { MOBILE_SIZE } from "@/constants";
 import Footer from "@/containers/Footer.client";
 import Header from "@/containers/Header.client";
-import Sidebar from "@/containers/Sidebar";
+import Sidebar from "@/containers/Sidebar.server";
 import { ThemeProvider } from "@/contexts/ThemeContext.client";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

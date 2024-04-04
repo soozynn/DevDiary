@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "My Dev Blog",
 };
 
-export default function Blog() {
+export default function BlogPage() {
   return (
     // 컨텐트 컨텍스트 목록이 보여지고, 연도별로 구분짓고 싶고,
     // 컨텐트를 눌러서 내부 페이지로 진입하면 내용 보여지고, 코드는 구분되고

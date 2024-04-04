@@ -4,6 +4,6 @@ export const metadata: Metadata = {
   title: "Contact soozynn",
 };
 
-export default function Contact() {
+export default function ContactPage() {
   return <>Contact</>;
 }
