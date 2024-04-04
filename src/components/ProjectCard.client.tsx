@@ -1,12 +1,21 @@
-"use client";
+import { RepositoryInformation } from "@/app/projects/page";
 
-import { getGithubPinnedRepositories } from "@/app/projects/page";
-import React, { useEffect } from "react";
-
-export default function ProjectCard() {
-  useEffect(() => {
-    console.log(getGithubPinnedRepositories());
-  }, []);
-
-  return <>BlogContext test</>;
+export default function ProjectCard({
+  name,
+  description,
+  url,
+  createdAt,
+  updatedAt,
+}: RepositoryInformation) {
+  return (
+    <div>
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        Visit Repository
+      </a>
+      <p>Created at: {createdAt}</p>
+      <p>Updated at: {updatedAt}</p>
+    </div>
+  );
 }
