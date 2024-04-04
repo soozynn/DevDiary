@@ -1,4 +1,4 @@
-import { useThemeContext } from "@/contexts/ThemeContext";
+import { useThemeContext } from "@/contexts/ThemeContext.client";
 import Link from "next/link";
 
 export default function Sidebar() {

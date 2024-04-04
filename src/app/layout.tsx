@@ -1,6 +1,6 @@
 import "./globals.css";
 import Loading from "./loading";
-import MainLayout from "@/containers/MainLayout";
+import MainLayout from "@/containers/MainLayout.client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";

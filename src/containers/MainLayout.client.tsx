@@ -2,10 +2,10 @@
 
 import ThemeBrightness from "@/components/ThemeSwitcher";
 import { MOBILE_SIZE } from "@/constants";
-import Footer from "@/containers/Footer";
-import Header from "@/containers/Header";
+import Footer from "@/containers/Footer.client";
+import Header from "@/containers/Header.client";
 import Sidebar from "@/containers/Sidebar";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "@/contexts/ThemeContext.client";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 

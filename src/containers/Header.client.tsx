@@ -1,7 +1,7 @@
 "use client";
 
 import SelfieImage from "../../public/selfie.png";
-import { useThemeContext } from "@/contexts/ThemeContext";
+import { useThemeContext } from "@/contexts/ThemeContext.client";
 import Image from "next/image";
 import Link from "next/link";
 

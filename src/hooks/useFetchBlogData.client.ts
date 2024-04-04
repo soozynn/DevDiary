@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 interface ReadPostListVariables {
@@ -5,10 +7,15 @@ interface ReadPostListVariables {
   url_slug: string;
 }
 
-interface ReadContentPostsVariables {
-  username: string;
+interface GetPostsInput {
   cursor: string;
+  username: string;
   limit: number;
+  tag: string;
+}
+
+interface ReadContentPostsVariables {
+  input: GetPostsInput;
 }
 
 export default function useFetchBlogData(
@@ -40,6 +47,7 @@ export default function useFetchBlogData(
 
         const data = await response.json();
         setBlogData(data);
+        console.log(blogData);
       } catch (error) {
         console.error("Failed to fetch blog data :(", error);
         // setError(error);
@@ -47,7 +55,7 @@ export default function useFetchBlogData(
         // setLoading(false);
       }
     })();
-  }, [query, variables]);
+  }, [blogData, query, variables]);
 
   return { blogData };
 }
