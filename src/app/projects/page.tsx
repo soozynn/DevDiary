@@ -45,8 +45,6 @@ const getPinnedRepositories = async (username: string) => {
 
 export default async function ProjectsPage() {
   // 프로젝트의 이미지는 컴포넌트별 끼워쓸 수 있게 재사용성으로 만들기
-  // 내부 항목 컴포넌트 만들어서 카드 형식으로 보여지도록 설정하고 클릭 시 레포 새탭으로 이동
-  // 카드 UI - 호버 시 파르르 돌도록 효과 넣기
   const pinnedProjectList = await getPinnedRepositories("soozynn");
 
   return (

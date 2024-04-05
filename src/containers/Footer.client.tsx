@@ -96,32 +96,32 @@ export default function Footer() {
 
   return (
     <footer
-      className={`${isBrightTheme ? "light-theme border-t border-t-gray-200" : "dark-theme"} fixed bottom-0 w-full`}
+      className={`${isBrightTheme ? "light-theme border-t border-t-gray-200" : "dark-theme"} bottom-0 flex w-full flex-shrink-0`}
     >
-      <div className="md:py-10 px-10 py-6">
-        <div className="md:flex justify-between md:divide-none divide-y divide-[#727274]">
-          <div className="md:hidden pt-5 pb-8">
-            <h5 className="mb-2 footer-h5">SOCIALS</h5>
+      <div className="px-10 py-6 md:py-10">
+        <div className="justify-between divide-y divide-[#727274] md:flex md:divide-none">
+          <div className="pb-8 pt-5 md:hidden">
+            <h5 className="footer-h5 mb-2">SOCIALS</h5>
             <SocialLinks />
           </div>
 
-          <div className="flex gap-10 pt-8 pb-5 md:pt-0 justify-between">
+          <div className="flex justify-between gap-10 pb-5 pt-8 md:pt-0">
             <div>
-              <h5 className="mb-2 footer-h5">VERSION</h5>
+              <h5 className="footer-h5 mb-2">VERSION</h5>
               <p>2024 © Edition </p>
             </div>
             <div>
-              <h5 className="mb-2 footer-h5">KOREA LOCAL TIME</h5>
+              <h5 className="footer-h5 mb-2">KOREA LOCAL TIME</h5>
               <TimeDisplay animate={animate} time={time} />
             </div>
           </div>
-          <div className="md:block hidden">
-            <h5 className="mb-2 footer-h5">SOCIALS</h5>
+          <div className="hidden md:block">
+            <h5 className="footer-h5 mb-2">SOCIALS</h5>
             <SocialLinks />
           </div>
         </div>
 
-        <nav className="pt-2 footer-h5 md:m-0">
+        <nav className="footer-h5 pt-2 md:m-0">
           <span>Built with </span>
           <Links text={"Next.js, "} link={"https://nextjs.org"} />
           <Links text={"Tailwind"} link={"https://tailwindcss.com"} />

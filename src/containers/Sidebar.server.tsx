@@ -6,7 +6,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`w-full ${isBrightTheme ? "light-theme" : "dark-theme"} p-4 overflow-y-auto`}
+      className={`w-full ${isBrightTheme ? "light-theme" : "dark-theme"} overflow-y-auto p-4`}
     >
       <ul className="flex flex-col gap-6">
         <li>

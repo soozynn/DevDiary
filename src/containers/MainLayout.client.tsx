@@ -1,6 +1,6 @@
 "use client";
 
-import ThemeBrightness from "@/components/ThemeSwitcher.server";
+import ThemeSwitcher from "@/components/ThemeSwitcher.server";
 import { MOBILE_SIZE } from "@/constants";
 import Footer from "@/containers/Footer.client";
 import Header from "@/containers/Header.client";
@@ -43,15 +43,22 @@ export default function MainLayout({
 
   return (
     <ThemeProvider>
-      <Header isOpenedSidebar={isOpenedSidebar} toggleSidebar={toggleSidebar} />
-      {isOpenedSidebar && (
-        <div className="top-[4.375rem] fixed flex w-full h-full left-0 z-20">
-          <Sidebar />
-        </div>
-      )}
-      <main>{children}</main>
-      <Footer />
-      <ThemeBrightness />
+      <div className="flex min-h-screen flex-col">
+        <Header
+          isOpenedSidebar={isOpenedSidebar}
+          toggleSidebar={toggleSidebar}
+        />
+        {isOpenedSidebar && (
+          <div className="fixed left-0 top-[4.375rem] z-20 flex h-full w-full">
+            <Sidebar />
+          </div>
+        )}
+        <main className="flex-grow">
+          {children}
+          <Footer />
+        </main>
+        <ThemeSwitcher />
+      </div>
     </ThemeProvider>
   );
 }
