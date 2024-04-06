@@ -43,16 +43,12 @@ export default function MainLayout({
 
   return (
     <ThemeProvider>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col overflow-auto">
         <Header
           isOpenedSidebar={isOpenedSidebar}
           toggleSidebar={toggleSidebar}
         />
-        {isOpenedSidebar && (
-          <div className="fixed left-0 top-[4.375rem] z-20 flex h-full w-full">
-            <Sidebar />
-          </div>
-        )}
+        {isOpenedSidebar && <Sidebar />}
         <main className="flex-grow">
           {children}
           <Footer />

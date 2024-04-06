@@ -6,9 +6,9 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`w-full ${isBrightTheme ? "light-theme" : "dark-theme"} overflow-y-auto p-4`}
+      className={`${isBrightTheme ? "light-theme" : "dark-theme"} fixed left-0 top-[4.375rem] z-50 h-[calc(100vh-4.375rem)] w-full overflow-y-auto`}
     >
-      <ul className="flex flex-col gap-6">
+      <ul className="flex flex-col gap-6 p-4">
         <li>
           <Link href="/about">About</Link>
         </li>
