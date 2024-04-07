@@ -41,6 +41,19 @@ export default function MainLayout({
     setIsOpenedSidebar(false);
   }, [pathname, searchParams]);
 
+  useEffect(() => {
+    if (isOpenedSidebar) {
+      document.body.classList.add("overflow-hidden");
+      return;
+    }
+
+    document.body.classList.remove("overflow-hidden");
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isOpenedSidebar]);
+
   return (
     <ThemeProvider>
       <div className="flex min-h-screen flex-col overflow-auto">
