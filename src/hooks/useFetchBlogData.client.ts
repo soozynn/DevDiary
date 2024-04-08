@@ -2,22 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-interface ReadPostListVariables {
-  username: string;
-  url_slug: string;
-}
-
-interface GetPostsInput {
-  cursor: string;
-  username: string;
-  limit: number;
-  tag: string;
-}
-
-interface ReadContentPostsVariables {
-  input: GetPostsInput;
-}
-
 export default function useFetchBlogData(
   query: string,
   variables: ReadPostListVariables | ReadContentPostsVariables,
@@ -58,4 +42,20 @@ export default function useFetchBlogData(
   }, [blogData, query, variables]);
 
   return { blogData };
+}
+
+interface ReadPostListVariables {
+  username: string;
+  url_slug: string;
+}
+
+interface GetPostsInput {
+  cursor: string;
+  username: string;
+  limit: number;
+  tag: string;
+}
+
+interface ReadContentPostsVariables {
+  input: GetPostsInput;
 }

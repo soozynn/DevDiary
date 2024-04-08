@@ -2,11 +2,6 @@
 
 import { createContext, ReactNode, useContext, useState } from "react";
 
-interface ThemeContextType {
-  isBrightTheme: boolean;
-  toggleTheme: () => void;
-}
-
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -31,4 +26,9 @@ export function useThemeContext() {
   }
 
   return context;
+}
+
+interface ThemeContextType {
+  isBrightTheme: boolean;
+  toggleTheme: () => void;
 }
