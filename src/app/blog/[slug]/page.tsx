@@ -1,3 +1,10 @@
+import BlogContentBody from "@/containers/BlogContentBody.client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Dev Blog Content",
+};
+
 const getVelogWritingContent = async (slug: string) => {
   const graphqlQuery = {
     operationName: "ReadPost",
@@ -97,18 +104,23 @@ const getVelogWritingContent = async (slug: string) => {
       }
       `,
   };
+  try {
+    const response: VelogDataResponse = await fetch(
+      "https://v2cdn.velog.io/graphql",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(graphqlQuery),
+      },
+    ).then((res) => res.json());
 
-  const response = await fetch("https://v3.velog.io/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(graphqlQuery),
-  });
-
-  // const velogWritingContentData = response?.data;
-
-  return response;
+    return response?.data?.post || null;
+  } catch (e) {
+    console.error("Fetching Velog Content API Error: ", e);
+    return null;
+  }
 };
 
 export default async function BlogContentPage({
@@ -116,17 +128,91 @@ export default async function BlogContentPage({
 }: {
   params: { slug: string };
 }) {
-  const velogWritingContentData = await getVelogWritingContent(params.slug); // slug가 변경되면 자동으로 재요청
-  console.log(velogWritingContentData);
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error}</div>;
-  // if (!postData) return <div>No data available</div>;
+  const velogWritingContentData = await getVelogWritingContent(
+    decodeURIComponent(params.slug),
+  );
 
   return (
     <div>
-      success
-      {/* <h1>{postData.post.title}</h1>
-      <p>{postData.post.short_description}</p> */}
+      {velogWritingContentData ? (
+        <BlogContentBody />
+      ) : (
+        <p>No content available</p>
+      )}
     </div>
   );
+}
+
+interface PostType {
+  id: string;
+  title: string;
+  released_at: string;
+  updated_at: string;
+  tags: string[];
+  body: string;
+  short_description: string;
+  is_markdown: boolean;
+  is_private: boolean;
+  is_temp: boolean;
+  thumbnail: string | null;
+  comments_count: number;
+  url_slug: string;
+  likes: number;
+  liked: boolean;
+  user: UserType;
+  comments: string[];
+  series: SeriesType | null;
+  linked_posts: LinkedPostsType;
+}
+
+interface SeriesType {
+  id: string;
+  name: string;
+}
+
+interface VelogDataResponse {
+  data: {
+    post: PostType;
+  };
+}
+
+interface UserType {
+  id: string;
+  username: string;
+  is_followed: boolean;
+  profile: UserProfileType;
+  velog_config: VelogConfigType;
+}
+
+interface UserProfileType {
+  id: string;
+  display_name: string;
+  thumbnail: string | null;
+  short_bio: string;
+  profile_links: ProfileLinksType;
+}
+
+interface ProfileLinksType {
+  github: string;
+}
+
+interface VelogConfigType {
+  title: string;
+}
+
+interface PreviousLinkedPostsType {
+  id: string;
+  title: string;
+  url_slug: string;
+  user: PostUserType;
+}
+
+interface PostUserType {
+  id: string;
+  username: string;
+}
+
+interface LinkedPostsType {
+  previous: PreviousLinkedPostsType | null;
+  next: PreviousLinkedPostsType | null;
 }
