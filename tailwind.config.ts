@@ -1,9 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       backgroundImage: {
@@ -12,22 +10,25 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       keyframes: {
-        'fade-in-down': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(-1.25rem)'
+        "fade-in-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-1.25rem)",
           },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)'
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
           },
         },
       },
       animation: {
-        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        "fade-in-down": "fade-in-down 0.5s ease-out",
       },
     },
   },
-  plugins: [],
+  variants: {
+    typography: ["dark"],
+  },
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

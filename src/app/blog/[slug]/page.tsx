@@ -1,4 +1,4 @@
-import BlogContentBody from "@/containers/BlogContentBody.client";
+import BlogContentBody from "@/containers/BlogContentBody.server";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -104,6 +104,7 @@ const getVelogWritingContent = async (slug: string) => {
       }
       `,
   };
+
   try {
     const response: VelogDataResponse = await fetch(
       "https://v2cdn.velog.io/graphql",
@@ -135,7 +136,7 @@ export default async function BlogContentPage({
   return (
     <div>
       {velogWritingContentData ? (
-        <BlogContentBody />
+        <BlogContentBody {...velogWritingContentData} />
       ) : (
         <p>No content available</p>
       )}
@@ -143,7 +144,7 @@ export default async function BlogContentPage({
   );
 }
 
-interface PostType {
+export interface PostType {
   id: string;
   title: string;
   released_at: string;
