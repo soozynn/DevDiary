@@ -11,9 +11,8 @@
   },
   "dependencies": {
     "@types/mdx": "^2.0.13",
-    "contentlayer": "^0.3.4",
     "next": "14.1.3",
-    "next-contentlayer": "^0.3.4",
+    "next-mdx-remote": "^4.4.1",
     "react": "^18",
     "react-dom": "^18"
   },

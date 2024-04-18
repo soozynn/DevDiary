@@ -83,6 +83,14 @@ next14 + tailwind + vercel을 이용한 개인 포트폴리오입니다.
 </details>
 <br/>
 
+<details>
+  <summary>마크다운 게시물 렌더링: MDX설정</summary>
+<br/>
+
+- [공식문서 링크](https://github.com/hashicorp/next-mdx-remote)
+</details>
+  <br/>
+
 ## Set up
 
 ```sh
