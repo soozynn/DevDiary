@@ -1,5 +1,5 @@
 import { PostType } from "@/app/blog/[slug]/page";
-import { CustomMDX } from "@/app/mdx-remote";
+import CustomMDX from "@/app/mdx-remote";
 
 export default function BlogContentBody(props: PostType) {
   const {
@@ -13,10 +13,9 @@ export default function BlogContentBody(props: PostType) {
     liked,
     comments,
   } = props;
-  console.log(body);
 
   return (
-    <>
+    <div className="m-4">
       <div>{title}</div>
       <div>업로드 날짜: {updated_at}</div>
       <div>수정된 날짜: {released_at}</div>
@@ -33,6 +32,6 @@ export default function BlogContentBody(props: PostType) {
         alt="velog content thumbnail"
       /> */}
       {/* <MDXContent /> */}
-    </>
+    </div>
   );
 }

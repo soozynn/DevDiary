@@ -84,12 +84,19 @@ next14 + tailwind + vercel을 이용한 개인 포트폴리오입니다.
 <br/>
 
 <details>
-  <summary>마크다운 게시물 렌더링: MDX설정</summary>
+  <summary>Troubleshooting MDX</summary>
 <br/>
 
-- [공식문서 링크](https://github.com/hashicorp/next-mdx-remote)
-</details>
+- 마크다운 게시물 렌더링을 MDX를 통해 설정하였다.
+  [공식문서 링크](https://github.com/hashicorp/next-mdx-remote)
   <br/>
+  Expected a closing tag for `<br>` (29:78-29:82) before the end of `paragraph`
+
+  - **첫째, React는 원래 DOM의 복사본을 만들고 이를 가상 DOM이라 일컫는다. 가상 DOM의 각 노드는 요소를 나타낸다.**
+
+  사용 중 문제가 있었는데, 위의 예시처럼 내가 작성했던 블로그에서 형식에 맞지 않게 작성한 글들이 많아서 mdx 컴파일링 단계에서 에러가 발생하게 되는 컨텐츠들이 있었다.
+    </details>
+    <br/>
 
 ## Set up
 

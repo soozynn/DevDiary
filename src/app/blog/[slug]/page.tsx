@@ -1,9 +1,12 @@
 import BlogContentBody from "@/containers/BlogContentBody.server";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "My Dev Blog Content",
-};
+export async function generateMetadata({ params }: { params: ParamsType }) {
+  const { slug } = params;
+
+  return {
+    title: decodeURIComponent(slug),
+  };
+}
 
 const getVelogWritingContent = async (slug: string) => {
   const graphqlQuery = {
@@ -216,4 +219,8 @@ interface PostUserType {
 interface LinkedPostsType {
   previous: PreviousLinkedPostsType | null;
   next: PreviousLinkedPostsType | null;
+}
+
+interface ParamsType {
+  slug: string;
 }

@@ -15,7 +15,7 @@ const components: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
 };
 
-export function CustomMDX(props) {
+export default function CustomMDX(props) {
   return (
     <MDXRemote
       {...props}

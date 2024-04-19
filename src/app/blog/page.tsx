@@ -2,7 +2,7 @@ import BlogCard from "@/components/BlogCard.server";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Dev Blog",
+  title: "My Dev Blog List",
 };
 
 const query = `
